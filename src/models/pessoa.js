@@ -6,7 +6,7 @@ const pessoaSchema = new mongoose.Schema({
     telefone:{type: String, required: false},
     dataNascimento: {type: Date, required: true},
     tipo:{type: String, required: true ,enum: ['Professor', 'Aluno']},
-    matricula: {type: String, unique: true}, 
+    matricula: {type: String}, 
     formacao: {type: String},
     dataCadastro: {type: Date, default: Date.now()}
 });

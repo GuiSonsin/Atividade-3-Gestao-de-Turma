@@ -32,8 +32,14 @@ async function cadastrarPessoa() {
             if(matricula.trim().length  === 0)
                 return console.error('\nMatricula é obrigatória para Aluno e precisa conter pelo menos 1 caracter');
         }else{
-            if(matricula.trim().length === 0)
-                matricula = null;
+            if(matricula.trim().length === 0){      
+               matricula = null;
+            }
+
+            const matriculaUnica = await PessoaModel.findOne({matricula});
+            
+            if(matriculaUnica !== null && matricula !== null)
+                return console.error('\nEsta matricula já foi cadastrada no sistema!')
         }
 
         const formacao = await perguntar('Digite a formação (OPCIONAL PARA ALUNO E PROFESSOR): ');
